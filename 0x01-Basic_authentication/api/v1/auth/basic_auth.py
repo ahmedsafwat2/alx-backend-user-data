@@ -36,3 +36,15 @@ class BasicAuth(Auth):
             return dc_str
         except(base64.binascii.Error, UnicodeDecodeError):
             return None
+
+    def extract_user_credentials(
+            self, decoded_base64_authorization_header: str) -> (str, str):
+        """extract credentials
+        """
+        dbah = decoded_base64_authorization_header
+        if dbah is None or not isinstance(dbah, str):
+            return (None, None)
+        if ':' not in dbah:
+            return (None, None)
+        parts = dbah.split(':')
+        return tuple(parts)
