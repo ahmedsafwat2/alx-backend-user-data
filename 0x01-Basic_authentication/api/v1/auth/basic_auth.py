@@ -48,7 +48,7 @@ class BasicAuth(Auth):
             return (None, None)
         if ':' not in dbah:
             return (None, None)
-        parts = dbah.split(':')
+        parts = dbah.split(':', 1)
         return tuple(parts)
 
     def user_object_from_credentials(
