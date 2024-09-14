@@ -29,7 +29,7 @@ def login():
     if len(users) <= 0:
         return jsonify({"error": "no user found for this email"}), 404
     if not users[0].is_valid_password(u_pwd):
-        return jsonify({"error": "wrong password"}), 404
+        return jsonify({"error": "wrong password"}), 401
     session_id = auth.create_session(users[0].id)
     response = jsonify(users[0].to_json())
     response.set_cookie(getenv("SESSION_NAME"), session_id)
