@@ -3,7 +3,7 @@
 session
 """
 
-from api.v1.auth.auth import Auth
+from api.v1.auth import Auth
 import uuid
 from models.user import User
 
