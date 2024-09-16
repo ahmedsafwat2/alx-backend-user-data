@@ -31,12 +31,12 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def add_user(self, email: str, hash_pwd: str) -> TypeVar('User'):
+    def add_user(self, email: str, hashed_password: str) -> User:
         """add_user
         """
         session = self._session
         try:
-            new_user = User(email=email, hashed_password=hash_pwd)
+            new_user = User(email=email, hashed_password=hashed_password)
             session.add(new_user)
             session.commit()
         except Exception:
