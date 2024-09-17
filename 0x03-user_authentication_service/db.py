@@ -46,7 +46,7 @@ class DB:
             new_user = None
         return new_user
 
-    def find_user_by(self, **kwargs: dict) -> User:
+    def find_user_by(self, **kwargs) -> User:
         """find user
         """
         attrs, vals = [], []
