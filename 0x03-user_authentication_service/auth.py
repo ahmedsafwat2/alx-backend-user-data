@@ -91,7 +91,6 @@ class Auth:
         db = self._db
         try:
             user = db.find_user_by(reset_token=reset_token)
-            print("******")
             db.update_user(user.id, hashed_password=_hash_password(password),
                            reset_token=None)
             return None
