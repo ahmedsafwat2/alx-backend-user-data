@@ -90,9 +90,8 @@ class Auth:
         """
         try:
             user = db.find_user_by(reset_token=reset_token)
-            db.update_user(user_id, reset_token=None,
-                           hashed_password=_hash_password(password))
-            return None
+            db.update_user(user.id, hashed_password=_hash_password(password),
+                           reset_token=None)
         except Exception:
             raise ValueError
 
