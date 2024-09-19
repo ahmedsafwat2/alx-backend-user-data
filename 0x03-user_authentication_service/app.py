@@ -2,7 +2,7 @@
 """
 Flask app
 """
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, redirect, url_for
 from auth import Auth
 
 
@@ -58,7 +58,6 @@ def logout() -> str:
         return redirect(url_for("home"))
     except Exception:
         abort(403)
-
 
 
 if __name__ == "__main__":
