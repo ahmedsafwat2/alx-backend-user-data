@@ -75,8 +75,6 @@ class Auth:
         db = self._db
         try:
             user = db.find_user_by(email=email)
-            #if user.session_id is None:
-            #    raise ValueError
             reset_token = _generate_uuid()
             user.reset_token = reset_token
             return reset_token
