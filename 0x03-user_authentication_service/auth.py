@@ -69,6 +69,18 @@ class Auth:
         db = self._db
         db.update_user(user_id, session_id=None)
 
+    def get_reset_password_token(self, email: str) -> str:
+        """get_reset_password_token
+        """
+        db = self._db
+        try:
+            user = db.find_user_by(email=email)
+            reset_token = _generate_uuid()
+            user.reset_token = reset_token
+            return reset_token
+        except Exception:
+            raise ValueError
+
 
 def _hash_password(password: str) -> bytes:
     """_hash_password
